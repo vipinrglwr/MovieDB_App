@@ -1,0 +1,120 @@
+/* SingleMoviePage.css */
+
+.single-movie-container-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.movie-header-new {
+  height: 400px; /* Adjust height as needed */
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.movie-overlay-new {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.movie-poster {
+  flex: 1;
+  max-width: 200px;
+  max-height: 200px;
+  margin-right: 20px;
+  z-index: 1;
+}
+
+.movie-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.movie-title {
+  font-size: 2.5em;
+  margin: 10px 0;
+  color: #e50914;
+}
+
+.movie-overview,
+.movie-release-date {
+  margin: 10px 0;
+}
+
+.cast-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+.cast-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #666666;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.cast-card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.cast-card:hover {
+  transform: scale(1.05);
+}
+
+.cast-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #333;
+}
+
+.cast-card h4 {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.cast-card p {
+  margin: 0 10px 10px;
+  font-size: 0.9em;
+}
+
+.movie-title-new {
+  font-size: 3rem;
+}
+.movie-overview-new {
+  position: relative;
+  right: 9.5rem;
+}
+.durationborder {
+  border: 2px solid;
+  padding: 1px;
+}

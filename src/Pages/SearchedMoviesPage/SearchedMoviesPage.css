@@ -1,0 +1,54 @@
+.searched-movies-container {
+  padding: 20px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.search-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.movie-card {
+  background-color: #121212;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  width: 200px;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie-details {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.movie-overview {
+  font-size: 14px;
+  color: #666;
+}

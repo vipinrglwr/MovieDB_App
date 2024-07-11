@@ -1,0 +1,109 @@
+/* Navbar.css */
+
+.navbar-new {
+  background-color: #141414;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.navbar-brand-new  {
+  color: #666666;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.navbar ul li a:hover {
+  color: #e50914;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+}
+
+.form-inline-new input {
+  padding: 5px 10px;
+  border: 1px solid #333;
+  border-radius: 20px;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.form-inline input::placeholder {
+  color: #999;
+}
+
+.form-inline-new button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: #e50914;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+
+}
+
+.form-inline button:hover {
+  background-color: #bf0811;
+}
+
+.followLink{
+  display: flex;
+  align-items: center;
+  margin-left:48rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.followLink li{
+  margin: 0 10px;
+
+  
+}
+.followLink li a {
+  color: #666666;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+.followLink li a:hover {
+  color: #e50914;
+}
+
+.form-inline-new {
+  display: flex;
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 1081px) {
+ .followLink{
+  display: none;
+ }
+}
+

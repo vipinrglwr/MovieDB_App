@@ -1,0 +1,72 @@
+.top-rated-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-rated-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.top-rated-card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.top-rated-card:hover {
+  transform: scale(1.05);
+}
+
+.top-rated-card img {
+  width: 100%;
+  height: auto;
+}
+
+.top-rated-card h2 {
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+.top-rated-card p {
+  font-size: 0.9em;
+  margin: 10px;
+}
+
+.top-rated-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.top-rated-button {
+  background-color: #f9a825;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.top-rated-button:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+}
+
+.top-rated-button:hover:not(:disabled) {
+  background-color: #d48a00;
+}
