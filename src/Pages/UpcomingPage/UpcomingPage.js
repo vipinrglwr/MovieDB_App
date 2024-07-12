@@ -5,12 +5,27 @@ import "./UpcomingPage.css";
 const UpcomingPage = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     fetchUpcomingMovies(page).then((response) => {
       setMovies(response.data.results);
+      setTotalPages(response.data.total_pages);
+
     });
   }, [page]);
+
+  const handlePrevious = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (page < totalPages) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className="upcoming-container-new">
@@ -24,14 +39,19 @@ const UpcomingPage = () => {
           </div>
         ))}
       </div>
-      <div className="upcoming-button-container-new">
+      <div className="pagination-container">
         <button
-          onClick={() => setPage((prev) => prev - 1)}
+          onClick={handlePrevious}
           disabled={page === 1}
         >
           Previous
         </button>
-        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+        <span>Page {page} of {totalPages}</span>
+        <button
+         onClick={handleNext}
+         >
+          Next
+          </button>
       </div>
     </div>
   );
