@@ -52,3 +52,9 @@
   font-size: 14px;
   color: #666;
 }
+.notAvailable{
+  text-align: center;
+}
+.pagination-container{
+  text-align: center;
+}

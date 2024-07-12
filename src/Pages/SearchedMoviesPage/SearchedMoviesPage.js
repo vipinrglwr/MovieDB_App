@@ -6,6 +6,9 @@ import "./SearchedMoviesPage.css";
 const SearchedMoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -16,6 +19,7 @@ const SearchedMoviesPage = () => {
       try {
         if (searchQuery) {
           const response = await searchMovies(searchQuery);
+          setTotalPages(response.data.total_pages);
           const filteredMovies = response.data.results.filter((movie) =>
             movie.title.toLowerCase().includes(searchQuery.toLowerCase())
           );
@@ -30,12 +34,26 @@ const SearchedMoviesPage = () => {
     fetchMovies();
   }, [searchQuery]);
 
+  const handlePrevious = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (page < totalPages) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
   return (
     <div className="searched-movies-container">
       <h1 className="search-title">Search Results "{searchQuery}"</h1>
 
       <div className="movies-list">
-        {movies.map((movie) => (
+        {searchQuery?(
+          movies.length>0 ? (
+        movies.map((movie) => (
           <div key={movie.id} className="movie-card">
             <img
               src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
@@ -47,9 +65,31 @@ const SearchedMoviesPage = () => {
               {/* <p className="movie-overview">{movie.overview}</p> */}
             </div>
           </div>
-        ))}
+        ))
+      ):(
+        <p className="notAvailable">No result found</p>
+      )
+    ):(
+      <p className="notAvailable" >Data is not available</p>        
+        )}
+      </div>
+      <div className="pagination-container">
+        <button
+          
+          onClick={handlePrevious }
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+        <span>Page {page} of {totalPages}</span>
+        <button
+         onClick={handleNext }
+         >
+          Next
+          </button>
       </div>
     </div>
+      
   );
 };
 
