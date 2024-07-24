@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { searchMovies } from "../../api/movieApi";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./SearchedMoviesPage.css";
+import CustomPagination from "../../Component/Pagination/CustomPagination";
 
 const SearchedMoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -34,15 +35,9 @@ const SearchedMoviesPage = () => {
     fetchMovies();
   }, [searchQuery]);
 
-  const handlePrevious = () => {
-    if (page > 1) {
-      setPage((prev) => prev - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (page < totalPages) {
-      setPage((prev) => prev + 1);
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setPage(newPage);
     }
   };
 
@@ -55,11 +50,14 @@ const SearchedMoviesPage = () => {
           movies.length>0 ? (
         movies.map((movie) => (
           <div key={movie.id} className="movie-card">
-            <img
+             <Link to={`/movie/${movie.id}`}>
+             <img
               src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
               alt={movie.title}
               className="movie-poster"
             />
+            </Link>
+          
             <div className="movie-details">
               <h2 className="movie-title">{movie.title}</h2>
               {/* <p className="movie-overview">{movie.overview}</p> */}
@@ -73,20 +71,8 @@ const SearchedMoviesPage = () => {
       <p className="notAvailable" >Data is not available</p>        
         )}
       </div>
-      <div className="pagination-container">
-        <button
-          
-          onClick={handlePrevious }
-          disabled={page === 1}
-        >
-          Previous
-        </button>
-        <span>Page {page} of {totalPages}</span>
-        <button
-         onClick={handleNext }
-         >
-          Next
-          </button>
+      <div className='pagination'>
+      <CustomPagination  page={page} totalPages={totalPages} handlePageChange={handlePageChange} />
       </div>
     </div>
       

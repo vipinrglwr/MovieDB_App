@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchTopRatedMovies, getImageUrl } from "../../api/movieApi";
 import "./TopRatedPage.css";
+import CustomPagination from "../../Component/Pagination/CustomPagination";
+import { Link } from "react-router-dom";
 const TopRatedPage = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,15 +17,9 @@ const TopRatedPage = () => {
     });
   }, [page]);
 
-  const handlePrevious = () => {
-    if (page > 1) {
-      setPage((prev) => prev - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (page < totalPages) {
-      setPage((prev) => prev + 1);
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setPage(newPage);
     }
   };
 
@@ -33,26 +29,16 @@ const TopRatedPage = () => {
       <div className="top-rated-grid">
         {movies.map((movie) => (
           <div key={movie.id} className="top-rated-card">
-            <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} />
+             <Link to={`/movie/${movie.id}`}>
+             <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} />
+            </Link>
             <h2>{movie.title}</h2>
             <h2>Rating : {movie.vote_average}</h2>
           </div>
         ))}
       </div>
-      <div className="pagination-container">
-        <button
-          onClick={handlePrevious}
-          disabled={page === 1}
-        >
-          Previous
-        </button>
-        <span>Page {page} of {totalPages}</span>
-        <button
-          onClick={handleNext}
-          disabled={page === totalPages}
-        >
-          Next
-        </button>
+      <div className='pagination'>
+      <CustomPagination  page={page} totalPages={476} handlePageChange={handlePageChange} />
       </div>
     </div>
   );

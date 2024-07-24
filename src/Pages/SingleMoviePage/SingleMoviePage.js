@@ -11,6 +11,7 @@ const SingleMoviePage = () => {
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
   const { id } = useParams();
+  console.log(useParams())
 
   useEffect(() => {
     fetchMovieDetails(id).then((response) => {

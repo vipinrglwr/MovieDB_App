@@ -8,15 +8,15 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Navigate to search results page with search term in URL
-    navigate(`/search?query=${searchQuery}`);
+  if(searchQuery.trim()===""){
+    navigate(`/`)
+  }else{
+      // Navigate to search results page with search term in URL
+      navigate(`/search?query=${searchQuery}`);
+  }
   };
 
-  const clearSearch = () => {
-    setSearchQuery("");
-    // Navigate back to home page when clearing search
-    navigate("/");
-  };
+
   return (
     <div>
       <nav className="navbar-new">
@@ -48,11 +48,6 @@ const Navbar = () => {
             placeholder="Search movies..."
           />
           <button type="submit">Search</button>
-          {/* {searchQuery && (
-            <button type="button" onClick={clearSearch}>
-              Clear
-            </button>
-          )} */}
         </form>
       </nav>
     </div>

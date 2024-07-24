@@ -55,6 +55,7 @@
 .notAvailable{
   text-align: center;
 }
-.pagination-container{
-  text-align: center;
+.pagination{
+  display: flex;
+  justify-content: center;
 }
